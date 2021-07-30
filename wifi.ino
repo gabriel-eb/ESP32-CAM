@@ -33,6 +33,8 @@ WiFiClient espClient; // Este objeto maneja las variables necesarias para una co
 // Variables del programa
 int statusLedPin = 33;  // Esta variable controla el led de status
 int flashLedPin = 4; // Esta variable controla el led flash
+int redLedPin = 12; // Esta variable controla el led rojo
+int blueLedPin = 13; // Esta variable controla el led azul
 double timeLast, timeNow; // Variables para el control de tiempo no bloqueante
 double wait = 500;  // Espera de 500 mili segundos para consultar conexión
 bool statusLed = 0;// Bandera que me dice si el led esta encendido o apagado
@@ -42,8 +44,12 @@ void setup() {
   //Configuración de pines
   pinMode (statusLedPin, OUTPUT);// Se configura el pin como salida
   pinMode (flashLedPin, OUTPUT);// Se configura el pin como salida
+  pinMode (redLedPin, OUTPUT);// Se configura el pin como salida
+  pinMode (redLedPin, OUTPUT);// Se configura el pin como salida
   digitalWrite (statusLedPin, HIGH);// Se comienza con el led apagado
   digitalWrite (flashLedPin, LOW);// Se comienza con el led apagado
+  digitalWrite (redLedPin, HIGH);// Se comienza con el led apagado
+  digitalWrite (blueLedPin, LOW);// Se comienza con el led apagado
 
   //Inicialización de comunicación serial
   Serial.begin (115200);
@@ -72,6 +78,8 @@ void setup() {
   // Si se logro la conexión, encender led
   if (WiFi.status () > 0){
   digitalWrite (flashLedPin, LOW);
+    digitalWrite (redLedPin, HIGH);
+    igitalWrite (blueLedPin, LOW);
   }
   timeLast = millis (); // Inicia el control de tiempo
 }// Fin del void setup 
@@ -81,11 +89,15 @@ void loop() {
   timeNow = millis ();  // Seguimiento de tiempo
   if ((timeNow - timeLast > wait) && statusLed == 0){// Comprobar el encendido del flash
     digitalWrite (flashLedPin, HIGH);// Encender el flash
+    digitalWrite (redLedPin, LOW); // Apagar el led rojo
+    igitalWrite (blueLedPin, HIGH); // Encender el led azul
     statusLed = 1;//Indicar que el led flash se encuentra encendido
     timeLast = millis (); // Inicia el control de tiempo
   }
   if ((timeNow - timeLast > wait) && statusLed == 1){
     digitalWrite (flashLedPin, LOW);// Apagar Led el flash
+    digitalWrite (redLedPin, HIGH); // Encender el led rojo
+    igitalWrite (blueLedPin, LOW);// Apagar el led azul
     statusLed = 0;//Indicar que el led flash se encuentra apagado
     timeLast = millis (); // Inicia el control de tiempo
   }
