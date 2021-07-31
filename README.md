@@ -2,13 +2,16 @@
 Repositorio con programas para la ESP-32.
 
 ## Webcam
-Fecha: 24/jul/2021
+Fecha: 24/jul/2021  
+Directorio: Webcam  
 Descripción: Instalación y prueba del ambiente Arduino en MV Ubuntu 20.04LTS. Se usó el programa de ejemplo de Arduino para la ESP32-CAM.
 
 ## Wifi
-Fecha: 29/jul/2021
+Fecha: 29/jul/2021  
+Directorio: wifi  
 Descripción: Programa de nivelación donde la ESP32 se conecta al WiFi y enciende el flash y leds en loop.
 
 ## MQTT & Temperatura
-Fecha: 31/jul/2021
+Fecha: 31/jul/2021  
+Directorio: ESP32CAM_MQTT-Basic  
 Descripción: Integración del ESP32 con sensor de temperatura y Node-Red para crear un dashboard que actualice la temperatura ambiente.
