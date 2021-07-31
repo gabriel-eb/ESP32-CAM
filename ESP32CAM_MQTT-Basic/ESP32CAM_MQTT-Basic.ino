@@ -2,6 +2,8 @@
  * Conexión básica por MQTT del NodeMCU
  * por: Hugo Escalpelo
  * Fecha: 28 de julio de 2021
+ * Modificado por: Gabriel Espinosa Burguete
+ * Modificado: 31 de julio de 2021
  * 
  * Este programa envía datos  por Internet a través del protocolo MQTT. Para poder
  * comprobar el funcionamiento de este programa, es necesario conectarse a un broker
@@ -18,12 +20,12 @@
 #include <PubSubClient.h> //Biblioteca para conexion MQTT
 
 //Datos de WiFi
-const char* ssid = "********";  // Aquí debes poner el nombre de tu red
-const char* password = "********";  // Aquí debes poner la contraseña de tu red
+const char* ssid = "INFINITUM945C_2.4";  // Aquí debes poner el nombre de tu red
+const char* password = "A5NT9ADfhp";  // Aquí debes poner la contraseña de tu red
 
 //Datos del broker MQTT
-const char* mqtt_server = "127.0.0.1"; // Si estas en una red local, coloca la IP asignada, en caso contrario, coloca la IP publica
-IPAddress server(127,0,0,1);
+const char* mqtt_server = "3.66.119.222"; // Si estas en una red local, coloca la IP asignada, en caso contrario, coloca la IP publica
+IPAddress server(3,66,119,222);
 
 // Objetos
 WiFiClient espClient; // Este objeto maneja los datos de conexion WiFi
@@ -98,7 +100,7 @@ void loop() {
     dtostrf(data, 1, 2, dataString);  // Esta es una función nativa de leguaje AVR que convierte un arreglo de caracteres en una variable String
     Serial.print("Contador: "); // Se imprime en monitor solo para poder visualizar que el evento sucede
     Serial.println(dataString);
-    client.publish("esp32/data", dataString); // Esta es la función que envía los datos por MQTT, especifica el tema y el valor
+    client.publish("esp32/data/grupo2", dataString); // Esta es la función que envía los datos por MQTT, especifica el tema y el valor
   }// fin del if (timeNow - timeLast > wait)
 }// fin del void loop ()
 
